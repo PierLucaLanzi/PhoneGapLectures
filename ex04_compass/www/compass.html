@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        
+        <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" />
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/jquery.mobile-1.3.2.min.js"></script>
+    </head>
+
+    <body>
+        
+        <div data-role="header" data-position="fixed"><h1>Compass</h1></div>
+
+            
+            <br><br>
+            <center>
+                <img id="compass" class="Center" width="300px" height="300px" src="images/compass320.png" />
+            </center>
+        
+        <div data-role="navbar" data-position="fixed">
+            <ul>
+                <li><a href="index.html">About</a></li>
+                <li><a href="compass.html" class="ui-btn-active">Compass</a></li>
+                <li><a href="compass2.html" >Compass2</a></li>
+            </ul> 
+        </div>
+        
+        <script type="text/javascript">
+            document.addEventListener('deviceready', onCompassReady, false);
+            
+            function onCompassSuccess(heading) {
+                alert('Heading: ' + heading.magneticHeading);
+                var angle = heading.magneticHeading;
+                $('#compass').css('transform','rotate(' + angle + 'deg)');
+            }
+
+            // onError: Failed to get the heading
+            //
+            function onCompassError(compassError) {
+                alert('Compass Error: ' + compassError.code);
+            }
+            
+            function onCompassReady()
+            {
+                alert("COMPASS IS READY");
+                navigator.compass.getCurrentHeading(onCompassSuccess, onCompassError);
+
+            }
+        </script>        
+    </body>
+</html>
