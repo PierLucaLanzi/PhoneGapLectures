@@ -1,0 +1,9 @@
+
+.middle-center {
+        position:absolute;
+        left:0%;
+        top:50%;
+        text-align:center;
+        min-width:100%;
+        font-family: 'Lato', sans-serif !important;
+}
